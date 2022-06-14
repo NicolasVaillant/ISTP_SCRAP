@@ -56,6 +56,6 @@ jour = 0
 setScreenColor(0x000000)
 label0.setText('Actuellement')
 label1.setText('Prochainement')
-formatted_next = 'https://stuff.nicolasvaillant.net/local/prive/istp/ressources/php/formatted_next.php'
-formatted = 'https://stuff.nicolasvaillant.net/local/prive/istp/ressources/php/formatted.php'
+formatted_next = 'php/formatted_next.php'
+formatted = 'php/formatted.php'
 AfficherEDT()

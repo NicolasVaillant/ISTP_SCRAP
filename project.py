@@ -6,8 +6,8 @@ import urequests
 setScreenColor(0x000000)
 
 
-jour = None
 formatted_next = None
+jour = None
 formatted = None
 
 
@@ -19,33 +19,33 @@ label3 = M5TextBox(0, 158, "Text", lcd.FONT_Ubuntu, 0xffffff, rotate=0)
 label5 = M5TextBox(258, 0, "Text", lcd.FONT_Default, 0xFFFFFF, rotate=0)
 
 
-# Describe this function...
+# Fetch class from php files and display it
 def AfficherEDT():
-  global jour, formatted_next, formatted
+  global formatted_next, jour, formatted
   label2.setText('Chargement...')
   label3.setText('Chargement...')
-  label5.setText(str((str('Jour: ') + str(jour))))
+  label5.setText(str('DONE'))
   try:
-    req = urequests.request(method='GET', url=formatted, headers={'Content-Type':'text/html'})
+    req = urequests.request(method='GET', url=(str(formatted) + str(((str('?day=') + str(jour))))), headers={})
     label2.setText(str(req.text))
   except:
     label2.setText('ERROR')
   try:
-    req = urequests.request(method='GET', url=formatted_next, headers={'Content-Type':'text/html'})
+    req = urequests.request(method='GET', url=(str(formatted_next) + str(((str('?day=') + str(jour))))), headers={})
     label3.setText(str(req.text))
   except:
     label3.setText('ERROR')
 
 
 def buttonB_wasPressed():
-  global jour, formatted_next, formatted
+  global formatted_next, jour, formatted
   jour = jour - 1
   AfficherEDT()
   pass
 btnB.wasPressed(buttonB_wasPressed)
 
 def buttonC_wasPressed():
-  global jour, formatted_next, formatted
+  global formatted_next, jour, formatted
   jour = jour + 1
   AfficherEDT()
   pass
@@ -56,8 +56,10 @@ jour = 0
 setScreenColor(0x000000)
 label0.setText('Actuellement')
 label1.setText('Prochainement')
+# -------------------------------------
 # Project relative path
-# Must be hosted on a server
+# Must be hosted on a web server
 formatted_next = 'php/formatted_next.php'
 formatted = 'php/formatted.php'
+# -------------------------------------
 AfficherEDT()

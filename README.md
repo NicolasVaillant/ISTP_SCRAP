@@ -1,5 +1,11 @@
 # ISTP_SCRAP
 
+![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white)
+
+```
+Copyright 2022, Thérence FOROT and Nicolas VAILLANT, All rights reserved.
+```
+
 Scrap made with [Goutte](https://github.com/FriendsOfPHP/Goutte) (add it in the same folder : 2 Mo ~)
 
 - scrap.php : returns a json file with the courses of the week

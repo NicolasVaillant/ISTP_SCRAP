@@ -52,6 +52,6 @@ Elements in json file are not formatted, need to be trimed or splited depending 
 Cours de [nom] avec [intervenant] jusqu'à [heure]
 ```
 
-- project.m5f : flow m5 project file, load it at https://flow.m5stack.com/
+- project.m5f : flow m5 project file, load it at [flow.m5stack.com](https://flow.m5stack.com/)
 
 - project.py : corresponding m5 python code

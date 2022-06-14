@@ -1,4 +1,7 @@
 <?php
+//------------------------------------------------
+//Copyright 2022, Nicolas VAILLANT, All rights reserved.
+//------------------------------------------------
 
 //Goutte client required
 require __DIR__ . "/vendor/autoload.php";

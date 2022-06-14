@@ -8,22 +8,45 @@ $edt = file_get_contents('scrap.php');
 $json = json_decode($edt)[0];
 //get current time
 $current = date("Y-m-dTH:i:s");
-$currentTst = strtotime($current);
+
+if (!isset($_GET['day'])) {
+    $day = 0;
+} else {
+    $day = intval($_GET['day']);
+}
+
+$currentTst = strtotime($current) + $day*60*60*24;
 
 foreach ($json as $key => $value) {
     if($key == "status"){
-        //first key is NaN
+        continue;
+    }
+
+    foreach ($value as $item => $val) {
+        if($item == "start"){
+            $start = strtotime(substr($val, 1, -1));
+        }
+        if ($item == "end") {
+            $end = strtotime(substr($val, 1, -1));
+        }
+    }
+    
+    if ($currentTst > $start && $currentTst < $end) {
+        // do nothing
+    } else {
         continue;
     }
     foreach ($value as $item => $val) {
-        if($item == "start"){
-            $start = strtotime($val);
+        $val = trim($val);
+        if($item == "title"){
+            $title = $val;
+        }
+        if ($item == "teacher") {
+            $teacher = $val;
         }
         if ($item == "end") {
-            $end = strtotime($val);
+            $end = explode("T", substr($val, 1, -1))[1];
         }
     }
-    if ($currentTst > $start && $currentTst < $end) {
-        echo $key;
-    }
+    echo "Cours de ".$title." avec ".$teacher." jusqu'a ".$end;
 }

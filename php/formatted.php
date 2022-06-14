@@ -1,4 +1,8 @@
 <?php
+//------------------------------------------------
+//Copyright 2022, Thérence FOROT and Nicolas VAILLANT, All rights reserved.
+//------------------------------------------------
+
 //get json content
 $edt = file_get_contents('scrap.php');
 $json = json_decode($edt)[0];

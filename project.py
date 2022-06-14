@@ -56,6 +56,8 @@ jour = 0
 setScreenColor(0x000000)
 label0.setText('Actuellement')
 label1.setText('Prochainement')
+# Project relative path
+# Must be hosted on a server
 formatted_next = 'php/formatted_next.php'
 formatted = 'php/formatted.php'
 AfficherEDT()

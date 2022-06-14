@@ -13,12 +13,12 @@ if (!isset($_GET['day'])) {
 }
 
 $currentTst = strtotime($current) + $day*60*60*24;
+$found = 0;
 
 foreach ($json as $key => $value) {
     if($key == "status"){
         continue;
     }
-
     foreach ($value as $item => $val) {
         if($item == "start"){
             $start = strtotime(substr($val, 1, -1));
@@ -27,9 +27,9 @@ foreach ($json as $key => $value) {
             $end = strtotime(substr($val, 1, -1));
         }
     }
-
     if ($currentTst > $start && $currentTst < $end) {
         // do nothing
+        $found = 1;
     } else {
         continue;
     }
@@ -47,5 +47,8 @@ foreach ($json as $key => $value) {
     }
     echo "Cours de ".$title." avec ".$teacher." jusqu'a ".$end;
 }
-
+if ($found == 0) {
+    //avoid empty string if requested
+    echo "Vide";
+}
 
